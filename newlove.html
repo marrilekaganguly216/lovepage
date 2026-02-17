@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do you love me? ❤️</title>
+
+<style>
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Times New Roman", serif;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-image: url("https://wallpapercave.com/wp/wp11330749.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  transition: background-image 0.5s ease;
+}
+
+/* Dark overlay */
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35);
+  z-index: 0;
+}
+
+/* Content above overlay */
+.container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+h1 {
+  font-size: clamp(26px, 4vw, 42px);
+  background: rgba(0,0,0,0.5);
+  padding: 15px 30px;
+  border-radius: 15px;
+  animation: fadeIn 1s;
+}
+
+button {
+  padding: 14px 30px;
+  font-size: clamp(16px, 2vw, 22px);
+  margin: 12px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
+#yes {
+  background-color: #ff4d6d;
+  color: white;
+}
+
+#no {
+  background-color: #6c757d;
+  color: white;
+  position: fixed;
+}
+
+#message {
+  margin-top: 30px;
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: bold;
+  background: rgba(0,0,0,0.5);
+  padding: 12px 25px;
+  border-radius: 15px;
+  animation: fadeIn 1s;
+}
+
+/* Floating hearts */
+
+.heart {
+  position: absolute;
+  color: red;
+  font-size: 20px;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 id="question">Do you love me? ❤️</h1>
+
+<button id="yes" onclick="yesClicked()">Yes ❤️</button>
+<button id="no" onmouseover="moveNo()" ontouchstart="moveNo()">No 💔</button>
+
+<div id="message"></div>
+
+</div>
+
+<script>
+
+let noCount = 0;
+
+/* Smart background function */
+
+function setBackground(url, position="center") {
+  document.body.style.backgroundImage = "url('" + url + "')";
+  document.body.style.backgroundPosition = position;
+  document.body.style.backgroundSize = "cover";
+}
+
+/* Floating hearts */
+
+function createHearts() {
+
+  setInterval(() => {
+
+    let heart = document.createElement("div");
+
+    heart.innerHTML = "❤️";
+
+    heart.className = "heart";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+    (Math.random() * 3 + 3) + "s";
+
+    heart.style.fontSize =
+    (Math.random() * 20 + 15) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+
+  }, 300);
+
+}
+
+/* YES clicked */
+
+function yesClicked() {
+
+  document.getElementById("no").style.display = "none";
+
+  document.getElementById("question").innerHTML =
+  "I knew it ❤️";
+
+  document.getElementById("message").innerHTML =
+  "I love you so much 😘❤️";
+
+  setBackground(
+  "https://i.etsystatic.com/54697506/r/il/2be8e3/6566607239/il_fullxfull.6566607239_8tem.jpg",
+  "center"
+  );
+
+  createHearts();
+}
+
+/* NO clicked */
+
+function moveNo() {
+
+  noCount++;
+
+  var messages = [
+    "What! 😳",
+    "Seriously!!! 😑",
+    "What is wrong with you 😤",
+    "Subraattttttttttt 😠"
+  ];
+
+  if(noCount <= messages.length) {
+    document.getElementById("message").innerHTML =
+    messages[noCount - 1];
+  }
+
+  if(noCount == 1){
+    setBackground(
+    "https://preview.redd.it/what-happens-when-bubu-gets-angry-v0-qfpyvbtfegxc1.png?width=1080&crop=smart&auto=webp&s=3e59423f766da8249f188d5d70dcd78609ba156b",
+    "center"
+    );
+  }
+
+  else if(noCount == 2){
+    setBackground(
+    "https://preview.redd.it/what-happens-when-bubu-gets-angry-v0-p0qmvnvfegxc1.png?width=1080&crop=smart&auto=webp&s=1d16151a5d6aeed062a9beb9f3fa8fe25a30b159",
+    "center top"
+    );
+  }
+
+  else if(noCount == 3){
+    setBackground(
+    "https://preview.redd.it/what-happens-when-bubu-gets-angry-v0-vt4wsqxfegxc1.png?width=1080&crop=smart&auto=webp&s=1b91ad21e2d77452a195a45ccba23aaf3ef4a611",
+    "center top"
+    );
+  }
+
+  else if(noCount >= 4){
+    setBackground(
+    "https://preview.redd.it/what-happens-when-bubu-gets-angry-v0-mupntrzfegxc1.png?width=1080&crop=smart&auto=webp&s=4063becc6e436802bd6edc1da177f5f325b760c2",
+    "center"
+    );
+  }
+
+  let button = document.getElementById("no");
+
+  let maxX = window.innerWidth - button.offsetWidth - 20;
+  let maxY = window.innerHeight - button.offsetHeight - 20;
+
+  let x = Math.random() * maxX;
+  let y = Math.random() * maxY;
+
+  button.style.left = x + "px";
+  button.style.top = y + "px";
+}
+
+</script>
+
+</body>
+</html>
