@@ -173,29 +173,29 @@ function createHearts() {
     setTimeout(() => heart.remove(), 6000);
 
   }, 300);
-
 }
 
 /* YES clicked */
 
 function yesClicked() {
 
-  document.getElementById("no").style.display = "none";
+    document.getElementById("yes").style.display = "none";   // ADD THIS LINE
+    document.getElementById("no").style.display = "none";
 
-  document.getElementById("question").innerHTML =
-  "I knew it ❤️";
+    document.getElementById("question").innerHTML =
+    "I knew it ❤️";
 
-  document.getElementById("message").innerHTML =
-  "I love you so much 😘❤️";
+    document.getElementById("message").innerHTML =
+    "I love you so much 😘❤️";
 
-  setBackground(
-  "https://i.etsystatic.com/54697506/r/il/2be8e3/6566607239/il_fullxfull.6566607239_8tem.jpg",
-  "center"
-  );
+    setBackground(
+    "https://i.etsystatic.com/54697506/r/il/2be8e3/6566607239/il_fullxfull.6566607239_8tem.jpg",
+    "center"
+    );
 
-  createHearts();
+    createHearts();
 }
-
+  
 /* NO clicked */
 
 function moveNo() {
@@ -261,3 +261,4 @@ function moveNo() {
 
 </body>
 </html>
+
