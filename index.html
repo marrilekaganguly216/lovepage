@@ -45,33 +45,40 @@ body::before {
 }
 
 h1 {
-  font-size: clamp(26px, 4vw, 42px);
+  font-size: clamp(32px, 5vw, 60px);
   background: rgba(0,0,0,0.5);
-  padding: 15px 30px;
+  padding: 20px 40px;
   border-radius: 15px;
   animation: fadeIn 1s;
 }
 
 button {
-  padding: 14px 30px;
-  font-size: clamp(16px, 2vw, 22px);
+  padding: 16px 35px;
+  font-size: clamp(18px, 2.5vw, 28px);
   margin: 12px;
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(255,255,255,0.6);
+  box-shadow: 0 0 20px rgba(255,255,255,0.8);
 }
 
+/* YES button upgraded */
 #yes {
   background-color: #ff4d6d;
   color: white;
+  transform: scale(1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+#yes:hover {
+  box-shadow: 0 0 30px rgba(255,77,109,0.9);
+}
+
+/* NO button */
 #no {
   background-color: #6c757d;
   color: white;
@@ -80,16 +87,15 @@ button:hover {
 
 #message {
   margin-top: 30px;
-  font-size: clamp(20px, 3vw, 32px);
+  font-size: clamp(24px, 4vw, 40px);
   font-weight: bold;
   background: rgba(0,0,0,0.5);
-  padding: 12px 25px;
+  padding: 15px 30px;
   border-radius: 15px;
   animation: fadeIn 1s;
 }
 
 /* Floating hearts */
-
 .heart {
   position: absolute;
   color: red;
@@ -132,6 +138,7 @@ button:hover {
 <script>
 
 let noCount = 0;
+let yesScale = 1;
 
 /* Smart background function */
 
@@ -209,32 +216,29 @@ function moveNo() {
 
   if(noCount == 1){
     setBackground(
-    "https://preview.redd.it/what-happens-when-bubu-gets-angry-v0-qfpyvbtfegxc1.png?width=1080&crop=smart&auto=webp&s=3e59423f766da8249f188d5d70dcd78609ba156b",
-    "center"
+    "https://preview.redd.it/what-happens-when-bubu-gets-angry-v0-qfpyvbtfegxc1.png?width=1080&crop=smart&auto=webp&s=3e59423f766da8249f188d5d70dcd78609ba156b"
     );
   }
 
   else if(noCount == 2){
     setBackground(
-    "https://preview.redd.it/what-happens-when-bubu-gets-angry-v0-p0qmvnvfegxc1.png?width=1080&crop=smart&auto=webp&s=1d16151a5d6aeed062a9beb9f3fa8fe25a30b159",
-    "center top"
+    "https://preview.redd.it/what-happens-when-bubu-gets-angry-v0-p0qmvnvfegxc1.png?width=1080&crop=smart&auto=webp&s=1d16151a5d6aeed062a9beb9f3fa8fe25a30b159"
     );
   }
 
   else if(noCount == 3){
     setBackground(
-    "https://preview.redd.it/what-happens-when-bubu-gets-angry-v0-vt4wsqxfegxc1.png?width=1080&crop=smart&auto=webp&s=1b91ad21e2d77452a195a45ccba23aaf3ef4a611",
-    "center top"
+    "https://preview.redd.it/what-happens-when-bubu-gets-angry-v0-vt4wsqxfegxc1.png?width=1080&crop=smart&auto=webp&s=1b91ad21e2d77452a195a45ccba23aaf3ef4a611"
     );
   }
 
   else if(noCount >= 4){
     setBackground(
-    "https://preview.redd.it/what-happens-when-bubu-gets-angry-v0-mupntrzfegxc1.png?width=1080&crop=smart&auto=webp&s=4063becc6e436802bd6edc1da177f5f325b760c2",
-    "center"
+    "https://preview.redd.it/what-happens-when-bubu-gets-angry-v0-mupntrzfegxc1.png?width=1080&crop=smart&auto=webp&s=4063becc6e436802bd6edc1da177f5f325b760c2"
     );
   }
 
+  /* Move NO button */
   let button = document.getElementById("no");
 
   let maxX = window.innerWidth - button.offsetWidth - 20;
@@ -245,6 +249,12 @@ function moveNo() {
 
   button.style.left = x + "px";
   button.style.top = y + "px";
+
+  /* Grow YES button */
+  yesScale += 0.20;
+
+  document.getElementById("yes").style.transform =
+  "scale(" + yesScale + ")";
 }
 
 </script>
